@@ -61,4 +61,9 @@ View(k_means_data)
 ```
 ![image](https://user-images.githubusercontent.com/49054741/150647762-2c1211cf-f0df-402a-821b-db8d67df6f25.png)
 
-
+## Identiying number of clusters
+To be able to identify number of clusters, three methods should be calculated earlier. To validate the number of selected clusters.
+Used Methods:
+ - Elbow Method.
+ - Silhouette Method.
+ - Gap Statistic Method
