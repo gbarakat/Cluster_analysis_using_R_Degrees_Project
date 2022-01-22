@@ -126,3 +126,25 @@ k_means <- kmeans(k_means_data,
 degrees_labeled <- degrees_clean %>%
   mutate(clusters = k_means$cluster)
  ```
+## Visualizing the clusters
+Now for the pretty part: visualizing our results. First let's take a look at how each cluster compares in Starting vs. Mid Career Median Salaries. What do the clusters say about the relationship between Starting and Mid Career salaries?
+```R
+career_growth <- ggplot(degrees_labeled,
+                        aes(x=Starting.Median.Salary,
+                            y=Mid.Career.Median.Salary,
+                            color=factor(clusters)))+
+  
+  geom_point(alpha = 0.8, size = 7)+
+  xlab("Starting Salary (Median)") +
+  ylab("Mid-Career Salary (Median)") +
+  ggtitle("K means - Starting vs Mid-Career Salary") +
+  scale_x_continuous(labels = scales::dollar) +
+  scale_y_continuous(labels = scales::dollar)
+
+# View the plot
+career_growth
+```
+![career-growth](https://user-images.githubusercontent.com/49054741/150648285-6911a9a9-3fae-40e4-94ce-c557dd5fab27.png)
+![career-growth](https://user-images.githubusercontent.com/49054741/150648286-7d9f269b-ed3e-47ad-b0be-27ccc83ae00c.png)
+
+# View the plot
