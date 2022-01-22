@@ -39,6 +39,7 @@ View(degrees)
 is.na(degrees)
 head(degrees)
 summary(degrees)
+ ```
 
 ![image](https://user-images.githubusercontent.com/49054741/150647142-814cf317-fa06-4bf3-92d3-de62408c17eb.png)
 
