@@ -8,8 +8,6 @@ This project can help us understand the professions that are well paid in the sh
 
 You can variously render different formats in RStudio and set options in the metadata header.
 
-  ![rstudio_knit-button](https://raw.githubusercontent.com/bbest/rmarkdown-example/master/screenshots/rstudio_knit-button.png)
-
 Check out [test.Rmd differences](https://github.com/bbest/rmarkdown-example/commits/master/test.Rmd) between commits as it gets built up:
 
 ## Exploring the Data
