@@ -14,7 +14,7 @@ The data used was being collected from a year-long survey of 1.2 million people 
 ## Exploring the Data 
 The dataset used to solve that challenge is not a complicated one (50X8) with no missing values. 
 
- ```
+ ```R
 ### Read in the dataset
 # 1. Importing data ----
 features <-c("College.Major",
@@ -67,3 +67,6 @@ Used Methods:
  - Elbow Method.
  - Silhouette Method.
  - Gap Statistic Method
+
+### Elbow Method:
+
