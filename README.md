@@ -145,6 +145,84 @@ career_growth <- ggplot(degrees_labeled,
 career_growth
 ```
 ![career-growth](https://user-images.githubusercontent.com/49054741/150648285-6911a9a9-3fae-40e4-94ce-c557dd5fab27.png)
-![career-growth](https://user-images.githubusercontent.com/49054741/150648286-7d9f269b-ed3e-47ad-b0be-27ccc83ae00c.png)
+
+## A deeper dive into the clusters
+Unsurprisingly, most of the data points are hovering in the top left corner, with a relatively linear relationship. In other words, the higher your starting salary, the higher your mid career salary. The three clusters provide a level of delineation that intuitively supports this.
+
+How might the clusters reflect potential mid career growth? There are also a couple curious outliers from clusters 1 and 3… perhaps this can be explained by investigating the mid career percentiles further, and exploring which majors fall in each cluster.
+
+Right now, we have a column for each percentile salary value. In order to visualize the clusters and majors by mid career percentiles, we'll need to reshape the degrees_labeled data using tidyr's gather function to make a percentile key column and a salary value column to use for the axes of our following graphs. We'll then be able to examine the contents of each cluster to see what stories they might be telling us about the majors.
+``` R
+degrees_perc <- degrees_labeled %>%
+  
+  select(c("College.Major", 
+           "Percentile.10", 
+           "Percentile.25", 
+           "Mid.Career.Median.Salary", 
+           "Percentile.75", 
+           "Percentile.90",
+           "clusters"))%>%
+  gather(key="percentile", value="salary", -c("College.Major","clusters"))%>%
+  mutate(percentile=factor(percentile,levels=c('Percentile.10',
+                                               'Percentile.25',
+                                               'Mid.Career.Median.Salary',
+                                               'Percentile.75',
+                                               'Percentile.90')))
+
+View(degrees_perc)
+```
+![image](https://user-images.githubusercontent.com/49054741/150648355-6a83d7f8-8f76-481a-8060-e2e79f5d48cf.png)
+
+## Cluster 1: The liberal arts cluster
+Let's graph Cluster 1 and examine the results. These Liberal Arts majors may represent the lowest percentiles with limited growth opportunity, but there is hope for those who make it! Music is our riskiest major with the lowest 10th percentile salary, but Drama wins the highest growth potential in the 90th percentile for this cluster (so don't let go of those Hollywood dreams!). Nursing is the outlier culprit of cluster number 1, with a higher safety net in the lowest percentile to the median. Otherwise, this cluster does represent the majors with limited growth opportunity.
+
+An aside: It's worth noting that most of these majors leading to lower-paying jobs are women-dominated, according to this Glassdoor study. According to the research:
+
+"The single biggest cause of the gender pay gap is occupation and industry sorting of men and women into jobs that pay differently throughout the economy. In the U.S., occupation and industry sorting explains 54 percent of the overall pay gap—by far the largest factor."
+
+Does this imply that women are statistically choosing majors with lower pay potential, or do certain jobs pay less because women choose them…?
+```R
+cluster_1 <- degrees_perc %>%
+  filter(clusters == 1)%>%
+  ggplot(aes(x=percentile, y = salary,group = College.Major, color = College.Major))+
+  geom_point()+
+  geom_line()+
+  ggtitle("Cluster 1: The Liberal Arts")+
+  theme(axis.text.x=element_text(size= 7, angle=25))
+# View the plot
+cluster_1
+```
+![Cluster_1](https://user-images.githubusercontent.com/49054741/150648404-c3a1fdf6-793b-45df-9a48-e465b88327c6.png)
+
+## Cluster 2: The goldilocks cluster
+On to Cluster 2, right in the middle! Accountants are known for having stable job security, but once you're in the big leagues you may be surprised to find that Marketing or Philosophy can ultimately result in higher salaries. The majors of this cluster are fairly middle of the road in our dataset, starting off not too low and not too high in the lowest percentile. However, this cluster also represents the majors with the greatest differential between the lowest and highest percentiles.
+``` R
+cluster_2 <- degrees_perc %>%
+  filter(clusters == 2)%>%
+  ggplot(aes(x=percentile, y = salary,group = College.Major, color = College.Major))+
+  geom_point()+
+  geom_line()+
+  ggtitle("Cluster 2: The Goldilocks")+
+  theme(axis.text.x=element_text(size= 7, angle=25))
 
 # View the plot
+cluster_2
+```
+![Cluster_2](https://user-images.githubusercontent.com/49054741/150648487-86cce9b6-e3b4-4e5e-b69c-1f99099bcc82.png)
+
+## Cluster 3 :The over achiever cluster
+Finally, let's visualize Cluster 3. If you want financial security, these are the majors to choose from. Besides our one previously observed outlier now identifiable as Physician Assistant lagging in the highest percentiles, these heavy hitters and solid engineers represent the highest growth potential in the 90th percentile, as well as the best security in the 10th percentile rankings. Maybe those Freakonomics guys are on to something…
+``` R
+cluster_3 <-  degrees_perc %>%
+  filter(clusters == 3)%>%
+  ggplot(aes(x=percentile, y = salary,group = College.Major, color = College.Major))+
+  geom_point()+
+  geom_line()+
+  ggtitle("Cluster 3: The Over Achievers")+
+  theme(axis.text.x=element_text(size= 7, angle=25))
+
+# View the plot
+cluster_3
+```
+![Cluster_3](https://user-images.githubusercontent.com/49054741/150648548-49e5a05c-7426-45ca-8955-9a4bcae40db6.png)
+
