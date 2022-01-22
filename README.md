@@ -79,3 +79,37 @@ elbow_method
 ```
 ![elbow_method](https://user-images.githubusercontent.com/49054741/150648019-deac29a5-9b3f-4a08-a0c1-d0b9db438142.png)
 
+
+### Silhouette Method
+``` R
+silhouette_method <- fviz_nbclust(k_means_data,
+                                  FUNcluster = kmeans,
+                                  method="silhouette")
+
+# View the plot
+silhouette_method
+
+```
+![Silheoutte](https://user-images.githubusercontent.com/49054741/150648065-98ec1553-2ce4-4ead-b49f-f818cc005b01.png)
+
+### Gap Statistic Method
+
+``` R
+gap_stat <- clusGap(k_means_data,
+                    FUN = kmeans,
+                    nstart=25,
+                    K.max=10,
+                    B=50)
+
+# Use the fviz_gap_stat function to vizualize the results
+gap_stat_method <- fviz_gap_stat(gap_stat)
+
+# View the plot
+gap_stat_method
+```
+![gap_stat](https://user-images.githubusercontent.com/49054741/150648109-80009a17-b6e8-4ff7-9e10-b555d63dbf9e.png)
+
+
+## K-means algorithm
+Looks like the Gap Statistic Method agreed with the Elbow Method! According to majority rule, let's use 3 for our optimal number of clusters. With this information, we can now run our k-means algorithm on the selected data. We will then add the resulting cluster information to label our original dataframe.
+
