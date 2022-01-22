@@ -39,7 +39,7 @@ summary(degrees)
 ## Cleaning Data
 The salary data is in currency format, which R considers a string. Let's strip those special characters using the gsub function and convert all of our columns except College.Major to numeric. Career.Percent.Growth column should be converted to a decimal value.
 
-```
+```R
 degrees_clean <- degrees %>% 
   mutate_at(vars(Starting.Median.Salary:Percentile.90),
             function(x) as.numeric(gsub('[\\$,]',"",x))) %>%
@@ -49,7 +49,7 @@ degrees_clean <- degrees %>%
 ## Data Scaling
 To be able to provide accurate comparisons between salaries of different majors. That data should be scaled to overcome gaps and variance between inputs.
 
-```
+```R
 k_means_data <- degrees_clean %>%
   select(c("Starting.Median.Salary",
            "Mid.Career.Median.Salary",
@@ -69,4 +69,13 @@ Used Methods:
  - Gap Statistic Method
 
 ### Elbow Method:
+```R
+elbow_method <- fviz_nbclust(k_means_data,
+                             FUNcluster=kmeans,
+                             method="wss")
+
+# View the plot
+elbow_method
+```
+![elbow_method](https://user-images.githubusercontent.com/49054741/150648019-deac29a5-9b3f-4a08-a0c1-d0b9db438142.png)
 
