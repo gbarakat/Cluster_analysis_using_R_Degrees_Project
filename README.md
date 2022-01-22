@@ -9,6 +9,7 @@ This project can help us understand the professions that are well paid in the sh
 The followig Script is written in R Language: (https://github.com/bbest/rmarkdown-example/commits/master/test.Rmd) 
 
 ## Exploring the Data 
+The dataset used to solve that challenge is not a complicated one (50X8) with no missing values. 
 
 1. [Add github markdown](https://github.com/bbest/rmarkdown-example/commit/c3e428e781f8b505feedc0d97b33080ed59067f6#diff-0)
 
@@ -38,3 +39,7 @@ View(degrees)
 is.na(degrees)
 head(degrees)
 summary(degrees)
+
+![image](https://user-images.githubusercontent.com/49054741/150647142-814cf317-fa06-4bf3-92d3-de62408c17eb.png)
+
+
