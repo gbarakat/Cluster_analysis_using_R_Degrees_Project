@@ -1,5 +1,5 @@
 
-# Cluster_analysis_using_R_Degrees_Project
+# Cluster analysis using R: Degrees That pay you back
 
 ## Background info
 This project can help us understand the professions that are well paid in the short and long term in an individual's professional career. However, this study provides us with a broad view on various professional areas including the salary of an entry level to an experienced senior professional:
