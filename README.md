@@ -6,6 +6,9 @@ This project can help us understand the professions that are well paid in the sh
  ### Investigating the initial salaries for people with   degrees of 50  different majors. 
  ### Identifying the career growth rate per each major.
 
+## Data Source
+The data used was being collected from a year-long survey of 1.2 million people with only a bachelor's degree by PayScale Inc. After doing some data clean up, we'll compare the recommendations from three different methods for determining the optimal number of clusters, apply a k-means clustering analysis, and visualize the results.
+
 The followig Script is written in R Language: (https://github.com/bbest/rmarkdown-example/commits/master/test.Rmd) 
 
 ## Exploring the Data 
