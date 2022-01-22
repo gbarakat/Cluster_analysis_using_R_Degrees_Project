@@ -112,4 +112,17 @@ gap_stat_method
 
 ## K-means algorithm
 Looks like the Gap Statistic Method agreed with the Elbow Method! According to majority rule, let's use 3 for our optimal number of clusters. With this information, we can now run our k-means algorithm on the selected data. We will then add the resulting cluster information to label our original dataframe.
+``` R
+# 5. Set k equal to the optimal number of clusters ----
+num_clusters <- 3
 
+# Run the k-means algorithm 
+k_means <- kmeans(k_means_data,
+                  centers=num_clusters,
+                  iter.max=15,
+                  nstart=25)
+
+# Label the clusters of degrees_clean
+degrees_labeled <- degrees_clean %>%
+  mutate(clusters = k_means$cluster)
+ ```
