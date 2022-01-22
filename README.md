@@ -1,13 +1,3 @@
-# Writing with Rmarkdown
-
-
-
-1. [Add github markdown](https://github.com/bbest/rmarkdown-example/commit/c3e428e781f8b505feedc0d97b33080ed59067f6#diff-0)
-
-  ```
-  output:
-    md_document:
-      variant: markdown_github
 # Cluster_analysis_using_R_Degrees_Project
 
 ## Background info
@@ -17,9 +7,13 @@ This project can help us understand the professions that are well paid in the sh
 
 ## Exploring the Data
 ### Read in the dataset
+
+
+[Add github markdown](https://github.com/bbest/rmarkdown-example/commit/c3e428e781f8b505feedc0d97b33080ed59067f6#diff-0)
+
+  
 # 1. Importing data ----
 
-1. [Add format options for pdf and docx](https://github.com/bbest/rmarkdown-example/commit/437e9f1436faaaa431b4f736cd2df21731125b5f#diff-0)
 
 features <-c("College.Major",
              "Starting.Median.Salary",
