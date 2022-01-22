@@ -17,9 +17,6 @@ The dataset used to solve that challenge is not a complicated one (50X8) with no
  ```
 ### Read in the dataset
 # 1. Importing data ----
-
-1. [Add format options for pdf and docx](https://github.com/bbest/rmarkdown-example/commit/437e9f1436faaaa431b4f736cd2df21731125b5f#diff-0)
-
 features <-c("College.Major",
              "Starting.Median.Salary",
              "Mid.Career.Median.Salary",
@@ -36,16 +33,13 @@ is.na(degrees)
 head(degrees)
 summary(degrees)
  ```
-
-![image](https://user-images.githubusercontent.com/49054741/150647142-814cf317-fa06-4bf3-92d3-de62408c17eb.png)
+![image](https://user-images.githubusercontent.com/49054741/150647785-00b43d64-c687-4498-9553-ba4959531bae.png)
 
 
 ## Cleaning Data
 The salary data is in currency format, which R considers a string. Let's strip those special characters using the gsub function and convert all of our columns except College.Major to numeric. Career.Percent.Growth column should be converted to a decimal value.
 
 ```
-
-      
 degrees_clean <- degrees %>% 
   mutate_at(vars(Starting.Median.Salary:Percentile.90),
             function(x) as.numeric(gsub('[\\$,]',"",x))) %>%
@@ -56,7 +50,6 @@ degrees_clean <- degrees %>%
 To be able to provide accurate comparisons between salaries of different majors. That data should be scaled to overcome gaps and variance between inputs.
 
 ```
-
 k_means_data <- degrees_clean %>%
   select(c("Starting.Median.Salary",
            "Mid.Career.Median.Salary",
@@ -66,4 +59,6 @@ k_means_data <- degrees_clean %>%
 
 View(k_means_data)
 ```
+![image](https://user-images.githubusercontent.com/49054741/150647762-2c1211cf-f0df-402a-821b-db8d67df6f25.png)
+
 
