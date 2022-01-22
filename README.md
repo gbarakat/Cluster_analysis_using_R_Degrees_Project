@@ -9,19 +9,12 @@ This project can help us understand the professions that are well paid in the sh
 ## Data Source
 The data used was being collected from a year-long survey of 1.2 million people with only a bachelor's degree by PayScale Inc. After doing some data clean up, we'll compare the recommendations from three different methods for determining the optimal number of clusters, apply a k-means clustering analysis, and visualize the results.
 
-The followig Script is written in R Language: (https://github.com/bbest/rmarkdown-example/commits/master/test.Rmd) 
+
 
 ## Exploring the Data 
 The dataset used to solve that challenge is not a complicated one (50X8) with no missing values. 
 
-1. [Add github markdown](https://github.com/bbest/rmarkdown-example/commit/c3e428e781f8b505feedc0d97b33080ed59067f6#diff-0)
-
-  ```
-  output:
-    md_document:
-      variant: markdown_github
-
-
+ ```
 ### Read in the dataset
 # 1. Importing data ----
 
@@ -51,15 +44,26 @@ summary(degrees)
 The salary data is in currency format, which R considers a string. Let's strip those special characters using the gsub function and convert all of our columns except College.Major to numeric. Career.Percent.Growth column should be converted to a decimal value.
 
 ```
-  output:
-    md_document:
-      variant: markdown_github
+
       
-      
-      degrees_clean <- degrees %>% 
+degrees_clean <- degrees %>% 
   mutate_at(vars(Starting.Median.Salary:Percentile.90),
             function(x) as.numeric(gsub('[\\$,]',"",x))) %>%
   mutate(Career.Percent.Growth = Career.Percent.Growth / 100)
 ```
 
+## Data Scaling
+To be able to provide accurate comparisons between salaries of different majors. That data should be scaled to overcome gaps and variance between inputs.
+
+```
+
+k_means_data <- degrees_clean %>%
+  select(c("Starting.Median.Salary",
+           "Mid.Career.Median.Salary",
+           "Percentile.10", 
+           "Percentile.90"))%>%
+  scale()
+
+View(k_means_data)
+```
 
