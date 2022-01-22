@@ -10,9 +10,7 @@ This project can help us understand the professions that are well paid in the sh
 
 
 [Add github markdown](https://github.com/bbest/rmarkdown-example/commit/c3e428e781f8b505feedc0d97b33080ed59067f6#diff-0)
-
-  
-# 1. Importing data ----
+1. Importing data ----
 
 
 features <-c("College.Major",
