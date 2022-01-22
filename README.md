@@ -8,6 +8,9 @@ This project can help us understand the professions that are well paid in the sh
 ## Exploring the Data
 ### Read in the dataset
 # 1. Importing data ----
+
+1. [Add format options for pdf and docx](https://github.com/bbest/rmarkdown-example/commit/437e9f1436faaaa431b4f736cd2df21731125b5f#diff-0)
+
 features <-c("College.Major",
              "Starting.Median.Salary",
              "Mid.Career.Median.Salary",
