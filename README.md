@@ -3,8 +3,8 @@
 
 ## Background info
 This project can help us understand the professions that are well paid in the short and long term in an individual's professional career. However, this study provides us with a broad view on various professional areas including the salary of an entry level to an experienced senior professional:
- ### Investigating the initial salaries for people with   degrees of 50  different majors. 
- ### Identifying the career growth rate per each major.
+ - Investigating the initial salaries for people with   degrees of 50  different majors. 
+ - Identifying the career growth rate per each major.
 
 ## Data Source
 The data used was being collected from a year-long survey of 1.2 million people with only a bachelor's degree by PayScale Inc. After doing some data clean up, we'll compare the recommendations from three different methods for determining the optimal number of clusters, apply a k-means clustering analysis, and visualize the results.
