@@ -6,11 +6,9 @@ This project can help us understand the professions that are well paid in the sh
  ### Investigating the initial salaries for people with   degrees of 50  different majors. 
  ### Identifying the career growth rate per each major.
 
-You can variously render different formats in RStudio and set options in the metadata header.
+The followig Script is written in R Language: (https://github.com/bbest/rmarkdown-example/commits/master/test.Rmd) 
 
-Check out [test.Rmd differences](https://github.com/bbest/rmarkdown-example/commits/master/test.Rmd) between commits as it gets built up:
-
-## Exploring the Data
+## Exploring the Data 
 
 1. [Add github markdown](https://github.com/bbest/rmarkdown-example/commit/c3e428e781f8b505feedc0d97b33080ed59067f6#diff-0)
 
